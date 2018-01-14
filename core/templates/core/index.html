@@ -8,5 +8,14 @@
 {% endblock %}
 
 {% block content %}
-    test
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                {% include "core/topic_list.html" %}
+            </div>
+            <div class="col-4">
+                {% include "core/category.html" %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

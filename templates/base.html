@@ -1,14 +1,40 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
 
+    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     {% block styles %}{% endblock %}
 
+    <script type="text/javascript" src="{% static "jquery/jquery-3.2.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    {% block scripts %}{% endblock %}
 </head>
 <body>
 <div>
+    {% block nav %}
+        <nav class="navigation navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Coursera blog</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">News</a>
+                    </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </nav>
+    {% endblock %}
     {% block content %}{% endblock %}
 </div>
 </body>
