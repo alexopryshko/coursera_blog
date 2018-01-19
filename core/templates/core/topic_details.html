@@ -8,9 +8,9 @@
 {% block content %}
     <div class="container">
         <div class="topic">
-            <h4><a href="#">Test</a></h4>
-            <h6>Категория: test</h6>
-            <p>Example text...</p>
+            <h4><a href="#">{{ topic.title }}</a></h4>
+            <h6>Категория ({{ topic.categories.count }}): {% for category in topic.categories.all %}{{ category.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</h6>
+            <p>{{ topic.body }}</p>
         </div>
     </div>
 {% endblock %}

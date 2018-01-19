@@ -1,22 +1,10 @@
 <div class="topic-list">
-    <div class="topic-list__item">
-        <h4><a href="#">Test</a></h4>
-        <h6>Категория: test</h6>
-        <p>Example text...</p>
-        <a href="{% url "topic_details" 1 %}" class="btn btn-outline-primary">More...</a>
-    </div>
-
-    <div class="topic-list__item">
-        <h4><a href="#">Test</a></h4>
-        <h6>Категория: test</h6>
-        <p>Example text...</p>
-        <a href="{% url "topic_details" 2 %}" class="btn btn-outline-primary">More...</a>
-    </div>
-
-    <div class="topic-list__item">
-        <h4><a href="#">Test</a></h4>
-        <h6>Категория: test</h6>
-        <p>Example text...</p>
-        <a href="{% url "topic_details" 3 %}" class="btn btn-outline-primary">More...</a>
-    </div>
+    {% for topic in topics %}
+        <div class="topic-list__item">
+            <h4><a href="#">{{ topic.title }}</a></h4>
+            <h6>Категория ({{ topic.categories__count }}): {% for category in topic.categories.all %}{{ category.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</h6>
+            <p>{{ topic.body }}</p>
+            <a href="{% url "topic_details" topic.pk %}" class="btn btn-outline-primary">More...</a>
+        </div>
+    {% endfor %}
 </div>
